@@ -8,13 +8,6 @@ hc() {
 
 hc emit_hook reload
 
-# Autostart apps
-#xsetroot -solid '#5A8E3A'
-setxkbmap fi
-feh --bg-scale /home/patrik/Kuvat/seal.jpg &
-xscreensaver -no-splash &
-xcompmgr -C &
-${HOME}/.config/polybar/launch.sh &
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -26,11 +19,12 @@ Mod=Mod4   # Use the super key as the main modifier
 
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
-hc keybind $Mod-Shift-c close
+hc keybind $Mod-x close
 hc keybind $Mod-Return spawn sakura
 hc keybind Alt-w spawn firefox-esr
 hc keybind Alt-Shift-l spawn xscreensaver-command -lock
 hc keybind Alt-f spawn rofi -combi-modi window,drun -theme DarkBlue -show combi
+hc keybind Alt-c spawn code
 
 # basic movement
 # focusing clients
@@ -105,7 +99,7 @@ hc keybind $Mod-space                                                           
 # mouse
 hc mouseunbind --all
 hc mousebind $Mod-Button1 move
-hc mousebind $Mod-Button2 zoom
+hc mousebind $Mod-Shift-Button3 zoom
 hc mousebind $Mod-Button3 resize
 
 # focus
@@ -118,18 +112,18 @@ hc keybind $Mod-i jumpto urgent
 # theme
 hc attr theme.tiling.reset 1
 hc attr theme.floating.reset 1
-hc set frame_border_active_color '#222222'
-hc set frame_border_normal_color '#101010'
-hc set frame_bg_normal_color '#565656'
-hc set frame_bg_active_color '#345F0C'
+hc set frame_border_active_color '#FFFFFF'
+hc set frame_border_normal_color '#000000'
+hc set frame_bg_normal_color '#000000'
+hc set frame_bg_active_color '#FFFFFF'
 hc set frame_border_width 1
 hc set always_show_frame 1
 hc set frame_bg_transparent 1
 hc set frame_transparent_width 5
 hc set frame_gap 4
 
-hc attr theme.active.color '#9fbc00'
-hc attr theme.normal.color '#454545'
+hc attr theme.active.color '#FFFFFF'
+hc attr theme.normal.color '#000000'
 hc attr theme.urgent.color orange
 hc attr theme.inner_width 1
 hc attr theme.inner_color black
@@ -137,15 +131,27 @@ hc attr theme.border_width 3
 hc attr theme.floating.border_width 4
 hc attr theme.floating.outer_width 1
 hc attr theme.floating.outer_color black
-hc attr theme.active.inner_color '#3E4A00'
-hc attr theme.active.outer_color '#3E4A00'
-hc attr theme.background_color '#141414'
+hc attr theme.active.inner_color '#000000'
+hc attr theme.active.outer_color '#000000'
+hc attr theme.background_color '#000000'
 
-hc set window_gap 0
+hc set window_gap 8
 hc set frame_padding 0
 hc set smart_window_surroundings 0
 hc set smart_frame_surroundings 1
 hc set mouse_recenter_gap 0
+
+hc pad 0 20 0 0 0
+hc pad 1 20 0 0 0
+
+# Autostart apps
+#xsetroot -solid '#5A8E3A'
+setxkbmap fi
+feh --bg-scale /home/patrik/Kuvat/seal.jpg &
+xscreensaver -no-splash &
+#xcompmgr -C &
+picom -b -C --config /home/patrik/.config/picom/picom.conf &
+${HOME}/.config/polybar/launch.sh &
 
 # rules
 hc unrule -F
@@ -166,7 +172,8 @@ hc unlock
 # do multi monitor setup here, e.g.:
 # hc set_monitors 1280x1024+0+0 1280x1024+1280+0
 # or simply:
-hc detect_monitors
+#hc detect_monitors
+hc set_monitors 2560x1440+0+0 1920x1080+2560+0
 
 # find the panel
 #panel=~/.config/herbstluftwm/panel.sh
