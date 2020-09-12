@@ -1,1 +1,0 @@
-echo "Ydin: $(uname -r)"
