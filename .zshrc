@@ -25,9 +25,10 @@ setopt COMPLETE_ALIASES
 # find new executables immediately
 zstyle ':completion:*' rehash true
 
-# custom print
-export PS1="%B%F{blue}%~%f:%F{cyan}%n%f >>%b "
-export RPS1="(%B%F{blue}%?%f%b)"
+# custom prompt
+setopt PROMPT_SUBST
+PROMPT="%B%F{blue}%~%f:%F{cyan}%n%f%b %B>>%b "
+RPROMPT="(%B%F{blue}%?%f%b)"
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
