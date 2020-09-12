@@ -2,6 +2,33 @@
 # .zshrc #
 ##########
 
+# scripts
+# install the following packages: zsh-syntax-highlighting zsh-autosuggestions pkgfile
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/doc/pkgfile/command-not-found.zsh
+
+# history
+export HISTFILE=$HOME/.zsh_histfile
+export HISTSIZE=100000
+export SAVEHIST=$HISTSIZE
+
+# load stuff
+autoload -Uz compinit promptinit
+compinit
+promptinit
+
+# autocomplete
+zstyle ':completion:*' menu select
+setopt COMPLETE_ALIASES
+
+# find new executables immediately
+zstyle ':completion:*' rehash true
+
+# custom print
+export PS1="%B%F{blue}%~%f:%F{cyan}%n%f >>%b "
+export RPS1="(%B%F{blue}%?%f%b)"
+
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
 typeset -g -A key
@@ -49,6 +76,12 @@ zle -N down-line-or-beginning-search
 
 [[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
 [[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
+
+key[Control-Left]="${terminfo[kLFT5]}"
+key[Control-Right]="${terminfo[kRIT5]}"
+
+[[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
+[[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
 
 ex() {
     if [ -f $1 ]; then
