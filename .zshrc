@@ -3,10 +3,9 @@
 ##########
 
 # scripts
-# install the following packages: zsh-syntax-highlighting zsh-autosuggestions pkgfile
+# install the following packages: zsh-syntax-highlighting zsh-autosuggestions
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/doc/pkgfile/command-not-found.zsh
 
 # history
 export HISTFILE=$HOME/.zsh_histfile
