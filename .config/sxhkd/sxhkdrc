@@ -133,7 +133,7 @@ XF86AudioLowerVolume
 XF86AudioMute
 	amixer -q -D pulse sset Master toggle
 
-#Brightness control
+## Brightness control
 XF86MonBrightnessDown
 	xbacklight -dec 5
 XF86MonBrightnessUp
