@@ -44,13 +44,6 @@ alias .3="cd ../../.."
 alias .4="cd ../../../.."
 alias .5="cd ../../../../.."
 
-alias uppkgs="sudo pacman -Syyu"
-alias upaur="yay -Sua"
-alias unlockdb="sudo rm /var/lib/pacman/db.lck"
-alias cleanup="sudo pacman -Rns $(pacman -Qtdq)"
-
-alias upmirror="sudo reflector -f 30 -l 30 -n 10 --verbose --save /etc/pacman.d/mirrorlist"
-
 alias ls="ls --color=always"
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
