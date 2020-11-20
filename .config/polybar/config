@@ -14,7 +14,9 @@ alert = #bd2c40
 ; BAR -- TOP LEFT
 [bar/topleft]
 ;monitor = ${env:MONITOR}
-width = 8.8%
+;width = 8.8%
+;offset-x = 0.5%
+width = 15%
 offset-x = 0.5%
 offset-y = 0.5%
 height = 24
@@ -34,9 +36,7 @@ border-color = #00000000
 padding-right = 2
 module-margin-left = 1
 
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+font-0 = "Hack:pixelsize=10:style=Regular:antialias=true;1"
 
 modules-left = bspwm
 wm-restack = bspwm
@@ -52,17 +52,15 @@ override-redirect = false
 ;monitor = ${env:MONITOR}
 height = 24
 
-; desktop setup -- with tray
-;width = 29%
-;offset-x = 68%
+; desktop setup
+;width = 22.3%
+;offset-x = 75%
 
-; desktop setup -- without tray
-width = 22.3%
-offset-x = 75%
-
-; laptop setup (WIP)
-;width =
-;offset-x =
+; laptop setup
+;width = 33%
+;offset-x = 63%
+width = 51%
+offset-x = 47%
 
 offset-y = 0.5%
 radius = 7.0
@@ -80,24 +78,13 @@ border-color = #00000000
 padding-right = 2
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+font-0 = "Hack:pixelsize=10:style=Regular:antialias=true;1"
 
-; laptop setup (WIP)
-;modules-right = eth wlan battery backlight-acpi pulseaudio xkeyboard date
+; laptop setup
+modules-right = wlan battery backlight-acpi pulseaudio xkeyboard date
 
 ; desktop setup
-modules-right = eth pulseaudio xkeyboard date
-
-; system tray
-;tray-position = left
-;tray-detached = false
-;tray-offset-x = 0
-;tray-offset-y = 0
-;tray-padding = 2
-;tray-maxsize = 20
-;tray-scale = 1.0
+;modules-right = eth pulseaudio xkeyboard date
 
 enable-ipc = true
 override-redirect = false
@@ -176,7 +163,7 @@ interval = 1.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = ${colors.primary}
-label-connected = %ifname% %essid%
+label-connected = %essid% | %local_ip%
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
@@ -263,7 +250,7 @@ format-discharging = "Discharging: <label-discharging>"
 ;format-discharging-underline = #FF0000 # Red
 format-discharging-underline = ${colors.primary}
 
-format-full-prefix = "Full"
+format-full = "Full"
 ;format-full-underline = #00FF00 # Green
 format-full-underline = ${colors.primary}
 
