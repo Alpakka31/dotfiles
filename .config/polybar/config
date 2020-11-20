@@ -1,5 +1,6 @@
 # My polybar config
 
+; -- COLORS
 [colors]
 background = #000000
 background-alt = #000000
@@ -9,14 +10,17 @@ primary = #399cbd
 secondary = #e60053
 alert = #bd2c40
 
-[bar/top]
-;monitor = ${env:MONITOR:HDMI-1}
-width = 100%
+
+; BAR -- TOP LEFT
+[bar/topleft]
+;monitor = ${env:MONITOR}
+width = 8.8%
+offset-x = 0.5%
+offset-y = 0.5%
 height = 24
-;offset-x = 1%
-;offset-y = 1%
+
 radius = 7.0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -27,31 +31,79 @@ line-color = #0000ff
 border-size = 4
 border-color = #00000000
 
-padding-left = 0
 padding-right = 2
-
 module-margin-left = 1
-module-margin-right = 2
 
 font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm
-;modules-center =
-modules-right = eth wlan battery backlight-acpi pulseaudio xkeyboard date
-
-tray-position = right
-tray-padding = 2
-;tray-background = #0063ff
-
 wm-restack = bspwm
-
-override-redirect = false
 
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
 
+enable-ipc = true
+override-redirect = false
+
+; BAR -- TOP RIGHT
+[bar/topright]
+;monitor = ${env:MONITOR}
+height = 24
+
+; desktop setup
+width = 29%
+offset-x = 68%
+
+; laptop setup (WIP)
+;width =
+;offset-x =
+
+offset-y = 0.5%
+radius = 7.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #0000ff
+
+border-size = 4
+border-color = #00000000
+
+padding-right = 2
+module-margin-right = 2
+
+font-0 = fixed:pixelsize=10;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+
+; laptop setup (WIP)
+;modules-right = eth wlan battery backlight-acpi pulseaudio xkeyboard date
+
+; desktop setup
+modules-right = eth pulseaudio xkeyboard date
+
+tray-position = left
+tray-detached = false
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 2
+tray-maxsize = 20
+tray-scale = 1.0
+
+enable-ipc = true
+override-redirect = false
+
+wm-restack = bspwm
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+
+
+; -- MODULES
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
