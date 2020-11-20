@@ -39,7 +39,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm
 ;modules-center =
-modules-right = wlan battery backlight-acpi pulseaudio xkeyboard date
+modules-right = eth wlan battery backlight-acpi pulseaudio xkeyboard date
 
 tray-position = right
 tray-padding = 2
@@ -115,15 +115,16 @@ card = amdgpu_bl0
 [module/wlan]
 type = internal/network
 interface = wlp1s0
-interval = 3.0
+interval = 1.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = ${colors.primary}
-label-connected = %essid%
+label-connected = %ifname% %essid%
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = "Disconnected"
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.foreground-alt}
 
 ramp-signal-0 =
 ramp-signal-1 =
@@ -134,19 +135,18 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = virbr0-nic
-interval = 3.0
+interface = enp0s3
+interval = 1.0
 
-format-connected-underline = #55aa55
-format-connected-prefix = ""
+format-connected = <label-connected>
+format-connected-underline = ${colors.primary}
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
+label-connected = %ifname% | %local_ip%
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+format-disconnected = <label-disconnected>
+format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
