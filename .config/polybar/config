@@ -52,9 +52,13 @@ override-redirect = false
 ;monitor = ${env:MONITOR}
 height = 24
 
-; desktop setup
-width = 29%
-offset-x = 68%
+; desktop setup -- with tray
+;width = 29%
+;offset-x = 68%
+
+; desktop setup -- without tray
+width = 22.3%
+offset-x = 75%
 
 ; laptop setup (WIP)
 ;width =
@@ -86,13 +90,14 @@ font-2 = siji:pixelsize=10;1
 ; desktop setup
 modules-right = eth pulseaudio xkeyboard date
 
-tray-position = left
-tray-detached = false
-tray-offset-x = 0
-tray-offset-y = 0
-tray-padding = 2
-tray-maxsize = 20
-tray-scale = 1.0
+; system tray
+;tray-position = left
+;tray-detached = false
+;tray-offset-x = 0
+;tray-offset-y = 0
+;tray-padding = 2
+;tray-maxsize = 20
+;tray-scale = 1.0
 
 enable-ipc = true
 override-redirect = false
