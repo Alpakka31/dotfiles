@@ -2,13 +2,21 @@
 
 # autostart programs
 sxhkd & # keybingins
+setxkbmap fi & # keyboard layout
 xsetroot -cursor_name left_ptr & # cursor pointer
 picom & # compositor
-feh --bg-scale /home/patrik/Kuvat/Taustakuvat/Winter-1080p.jpg & # background
+feh --bg-scale /home/patrik/Kuvat/Taustakuvat/Salamander.png & # background
 $HOME/.config/polybar/launch.sh # polybar
 
 # monitors and workspaces
-bspc monitor -d 1 2 3 4 5 6 7
+
+# single monitor setup
+# bspc monitor -d 1 2 3 4 5 6 7
+
+# multi-monitor setup
+bspc monitor DP-0 -d 1 2 3 4
+bspc monitor DP-2 -d 5 6 7
+
 
 bspc config border_width               2
 bspc config window_gap                 4
@@ -30,10 +38,10 @@ bspc config pointer_action2 resize_side
 bspc config pointer_action3 resize_corner
 
 # 60hz refresh rate
-bspc config pointer_motion_interval 17
+# bspc config pointer_motion_interval 17
 
 # 144hz refresh rate
-# bspc config pointer_motion_interval 7
+bspc config pointer_motion_interval 7
 
 # rules
 bspc rule -a Gimp desktop='^8' state=floating follow=on
