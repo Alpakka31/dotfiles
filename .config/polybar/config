@@ -57,8 +57,8 @@ height = 24
 ;offset-x = 75%
 
 ; laptop setup
-width = 50%
-offset-x = 47%
+width = 44%
+offset-x = 53%
 ;width = 57%
 ;offset-x = 41%
 
@@ -163,11 +163,11 @@ interval = 1.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = ${colors.primary}
-label-connected = %essid% | %local_ip%
+label-connected = %essid%
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = %ifname% disconnected
+label-disconnected = Disconnected
 label-disconnected-foreground = ${colors.foreground-alt}
 
 ramp-signal-0 =
@@ -185,11 +185,11 @@ interval = 1.0
 format-connected = <label-connected>
 format-connected-underline = ${colors.primary}
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %ifname% | %local_ip%
+label-connected = %ifname%
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = %ifname% disconnected
+label-disconnected = Disconnected
 label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
