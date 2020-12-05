@@ -4,8 +4,9 @@
 sxhkd & # keybingins
 setxkbmap fi & # keyboard layout
 xsetroot -cursor_name left_ptr & # cursor pointer
+lxpolkit & # polkit agent
 picom & # compositor
-feh --bg-scale /home/patrik/Kuvat/Taustakuvat/Salamander.png & # background
+feh --bg-scale /home/patrik/Kuvat/Salamander.png & # background
 $HOME/.config/polybar/launch.sh # polybar
 
 # monitors and workspaces
