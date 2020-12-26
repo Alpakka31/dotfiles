@@ -2,37 +2,27 @@
 
 ; -- COLORS
 [colors]
-background = #000000
-background-alt = #000000
-foreground = #dfdfdf
-foreground-alt = #555
-primary = #399cbd
-secondary = #e60053
-alert = #bd2c40
+bg = #000000
+fg = #dfdfdf
+color-1 = #399cbd
+color-2 = #e60053
 
 
-; BAR -- TOP RIGHT : DESKTOP
-[bar/topleft-desktop]
+[bar/mainbar]
 monitor = ${env:MONITOR:}
-width = 7%
-offset-x = 0.5%
-offset-y = 0.5%
+width = 100%
 height = 24
-
-radius = 7.0
 fixed-center = true
-
-background = ${colors.background}
-foreground = ${colors.foreground}
+background = ${colors.bg}
+foreground = ${colors.fg}
 
 line-size = 2
 line-color = #0000ff
 
-border-size = 4
-border-color = #00000000
-
-padding-right = 2
+border-color = ${colors.bg}
+padding = 2
 module-margin-left = 1
+module-margin-right = 1
 
 font-0 = "Hack:pixelsize=10:style=Regular:antialias=true;1"
 
@@ -45,149 +35,23 @@ scroll-down = bspwm-deskprev
 enable-ipc = true
 override-redirect = false
 
-
-; BAR -- TOP LEFT : LAPTOP
-[bar/topleft-laptop]
-monitor = ${env:MONITOR:}
-width = 15%
-offset-x = 0.5%
-offset-y = 0.5%
-height = 24
-
-radius = 7.0
-fixed-center = true
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 2
-line-color = #0000ff
-
-border-size = 4
-border-color = #00000000
-
-padding-right = 2
-module-margin-left = 1
-
-font-0 = "Hack:pixelsize=10:style=Regular:antialias=true;1"
-
-modules-left = bspwm
-wm-restack = bspwm
-
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
-
-enable-ipc = true
-override-redirect = false
-
-
-; BAR -- TOP RIGHT : DESKTOP
-[bar/topright-desktop]
-monitor = ${env:MONITOR:}
-height = 24
-
-width = 23.3%
-offset-x = 74.6%
-
-offset-y = 0.5%
-radius = 7.0
-fixed-center = true
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 2
-line-color = #0000ff
-
-border-size = 4
-border-color = #00000000
-
-padding-right = 2
-module-margin-right = 2
-
-font-0 = "Hack:pixelsize=10:style=Regular:antialias=true;1"
-
-modules-right = eth pulseaudio date
-
-enable-ipc = true
-override-redirect = false
-
-wm-restack = bspwm
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
-
-
-; BAR -- TOP RIGHT : LAPTOP
-[bar/topright-laptop]
-monitor = ${env:MONITOR:}
-height = 24
-
-width = 44%
-offset-x = 53%
-
-offset-y = 0.5%
-radius = 7.0
-fixed-center = true
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 2
-line-color = #0000ff
-
-border-size = 4
-border-color = #00000000
-
-padding-right = 2
-module-margin-right = 2
-
-font-0 = "Hack:pixelsize=10:style=Regular:antialias=true;1"
-
-modules-right = wlan battery backlight-acpi pulseaudio date
-
-enable-ipc = true
-override-redirect = false
-
-wm-restack = bspwm
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
-
-
-
-; -- MODULES
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-;format-prefix = ""
-;format-prefix-foreground = ${colors.foreground-alt}
-;format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.primary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
+modules-right = battery backlight-acpi pulseaudio date
+tray-position = right
+tray-padding = 2
 
 [module/bspwm]
 type = internal/bspwm
 
 label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused-background = ${colors.bg}
+label-focused-underline= ${colors.color-1}
 label-focused-padding = 2
 
 label-occupied = %index%
 label-occupied-padding = 2
 
-label-urgent = %index%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
 label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
+label-empty-foreground = #808080
 label-empty-padding = 2
 
 ; Separator in between workspaces
@@ -197,7 +61,7 @@ label-empty-padding = 2
 type = internal/xbacklight
 
 format = <label> <bar>
-label = "Brightness:"
+label = "Bri:"
 
 bar-width = 10
 bar-indicator = >
@@ -205,65 +69,26 @@ bar-indicator-foreground = #fff
 bar-indicator-font = 2
 bar-fill = ─
 bar-fill-font = 2
-bar-fill-foreground = ${colors.primary}
+bar-fill-foreground = ${colors.color-1}
 bar-empty = ─
 bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
+bar-empty-foreground = #808080
 
 [module/backlight-acpi]
 inherit = module/xbacklight
 type = internal/backlight
 card = amdgpu_bl0
 
-[module/wlan]
-type = internal/network
-interface = wlp1s0
-interval = 1.0
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = ${colors.primary}
-label-connected = %essid%
-
-format-disconnected = <label-disconnected>
-format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = Disconnected
-label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 =
-ramp-signal-1 =
-ramp-signal-2 =
-ramp-signal-3 =
-ramp-signal-4 =
-ramp-signal-foreground = ${colors.foreground-alt}
-
-[module/eth]
-type = internal/network
-interface = enp5s0
-interval = 1.0
-
-format-connected = <label-connected>
-format-connected-underline = ${colors.primary}
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = Connected
-
-format-disconnected = <label-disconnected>
-format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = Disconnected
-label-disconnected-foreground = ${colors.foreground-alt}
-
 [module/date]
 type = internal/date
 interval = 1
 
 date = %d.%m.%Y
-date-alt = " %d.%m.%Y"
-
 time = %H:%M
-time-alt = %H:%M:%S
 
 format-prefix =
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.primary}
+format-prefix-foreground = ${colors.color-2}
+format-underline = ${colors.color-1}
 
 label = %date% %time%
 
@@ -271,21 +96,19 @@ label = %date% %time%
 type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
-label-volume = "Volume: %percentage%%"
-;label-volume-foreground = ${root.foreground}
-;label-volume-foreground = #fff
+label-volume = "Vol: %percentage%%"
 
 label-muted = muted
 label-muted-foreground = #666
 
 bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.primary}
-bar-volume-foreground-1 = ${colors.primary}
-bar-volume-foreground-2 = ${colors.primary}
-bar-volume-foreground-3 = ${colors.primary}
-bar-volume-foreground-4 = ${colors.primary}
-bar-volume-foreground-5 = ${colors.primary}
-bar-volume-foreground-6 = ${colors.primary}
+bar-volume-foreground-0 = ${colors.color-1}
+bar-volume-foreground-1 = ${colors.color-1}
+bar-volume-foreground-2 = ${colors.color-1}
+bar-volume-foreground-3 = ${colors.color-1}
+bar-volume-foreground-4 = ${colors.color-1}
+bar-volume-foreground-5 = ${colors.color-1}
+bar-volume-foreground-6 = ${colors.color-1}
 bar-volume-gradient = false
 bar-volume-indicator = >
 bar-volume-indicator-font = 2
@@ -293,7 +116,7 @@ bar-volume-fill = ─
 bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+bar-volume-empty-foreground = #808080
 
 [module/battery]
 type = internal/battery
@@ -301,20 +124,15 @@ battery = BATT
 adapter = ACAD
 full-at = 98
 
-format-charging = "Charging: <label-charging>"
-;format-charging-underline = #FFFF00 # Yellow
-format-charging-underline = ${colors.primary}
+format-charging = "<label-charging>"
+format-charging-underline = #FFFF00
 
-format-discharging = "Discharging: <label-discharging>"
-;format-discharging-underline = #FF0000 # Red
-format-discharging-underline = ${colors.primary}
+format-discharging = "<label-discharging>"
+format-discharging-underline = #FF0000 # Red
 
 format-full = "Full"
-;format-full-underline = #00FF00 # Green
-format-full-underline = ${colors.primary}
+format-full-underline = #00FF00 # Green
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
-
-; vim:ft=dosini
+margin-top = 0
+margin-bottom = 0
