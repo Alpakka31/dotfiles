@@ -1,137 +1,201 @@
 # My polybar config
+# Based on https://github.com/Yucklys/polybar-nord-theme
 
-; -- COLORS
 [colors]
-bg = #000000
-fg = #dfdfdf
-color-1 = #399cbd
-color-2 = #e60053
+background = #2E3440
+buffer = #4c566a
+foreground = #D8DEE9
+nord6 = #ECEFF4
+nord7 = #8FBCBB
+nord8 = #88C0D0
+nord9 = #81A1C1
+urgent = #BF616A
+warning = #D08770
+notify = #EBCB8B
+success = #A3BE8C
+function = #B48EAD
 
+[bar/main]
+monitor = ${env:MONITOR:eDP-1}
 
-[bar/mainbar]
-monitor = ${env:MONITOR:}
+background = ${colors.background}
+foreground = ${colors.foreground}
+
 width = 100%
 height = 24
+offset-x = 0
+offset-y = 0
+
+radius = 0.0
 fixed-center = true
-background = ${colors.bg}
-foreground = ${colors.fg}
-
-line-size = 2
-line-color = #0000ff
-
-border-color = ${colors.bg}
-padding = 2
-module-margin-left = 1
-module-margin-right = 1
-
-font-0 = "Hack:pixelsize=10:style=Regular:antialias=true;1"
-
-modules-left = bspwm
-wm-restack = bspwm
-
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
-
-enable-ipc = true
 override-redirect = false
 
-modules-right = battery backlight-acpi pulseaudio date
+line-size = 2
+
+padding = 2
+font-0 = "Hack Nerd Font:style=Regular:pixelsize=10:antialias=true;1"
+
+tray-padding = 3
+tray-detached = false
 tray-position = right
-tray-padding = 2
+enable-ipc = true
 
-[module/bspwm]
-type = internal/bspwm
+module-margin = 1
+modules-left = polywins
+#modules-center =
+modules-right = network alsa backlight battery date
 
-label-focused = %index%
-label-focused-background = ${colors.bg}
-label-focused-underline= ${colors.color-1}
-label-focused-padding = 2
 
-label-occupied = %index%
-label-occupied-padding = 2
-
-label-empty = %index%
-label-empty-foreground = #808080
-label-empty-padding = 2
-
-; Separator in between workspaces
-; label-separator = |
-
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = "Bri:"
-
-bar-width = 10
-bar-indicator = >
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = ${colors.color-1}
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = #808080
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = amdgpu_bl0
+;--modules--;
 
 [module/date]
 type = internal/date
-interval = 1
-
+interval = 1.0
 date = %d.%m.%Y
 time = %H:%M
 
-format-prefix =
-format-prefix-foreground = ${colors.color-2}
-format-underline = ${colors.color-1}
-
-label = %date% %time%
-
-[module/pulseaudio]
-type = internal/pulseaudio
-
-format-volume = <label-volume> <bar-volume>
-label-volume = "Vol: %percentage%%"
-
-label-muted = muted
-label-muted-foreground = #666
-
-bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.color-1}
-bar-volume-foreground-1 = ${colors.color-1}
-bar-volume-foreground-2 = ${colors.color-1}
-bar-volume-foreground-3 = ${colors.color-1}
-bar-volume-foreground-4 = ${colors.color-1}
-bar-volume-foreground-5 = ${colors.color-1}
-bar-volume-foreground-6 = ${colors.color-1}
-bar-volume-gradient = false
-bar-volume-indicator = >
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = #808080
+format = <label>
+label =  %date% %time%
+label-margin = 1
+label-underline = ${colors.nord8}
 
 [module/battery]
 type = internal/battery
+
+full-at = 100
+
 battery = BATT
 adapter = ACAD
-full-at = 98
 
-format-charging = "<label-charging>"
-format-charging-underline = #FFFF00
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = ${colors.foreground}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
 
-format-discharging = "<label-discharging>"
-format-discharging-underline = #FF0000 # Red
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${colors.notify}
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.notify}
 
-format-full = "Full"
-format-full-underline = #00FF00 # Green
+label-full = 
+label-full-foreground = ${colors.success}
+label-full-underline = ${colors.success}
+
+[module/keyboard]
+type = internal/xkeyboard
+
+; List of indicators to ignore
+bufferlist-0 = num lock
+bufferlist-1 = scroll lock
+
+; Format
+format = <label-indicator>
+
+label-indicator-on-capslock =  CL
+label-indicator-on-capslock-foreground = ${colors.warning}
+label-indicator-on-capslock-underline = ${colors.warning}
+
+; Icons
+layout-icon-default = 
+
+[module/alsa]
+type = internal/alsa
+
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+
+master-mixer = Master
+
+; Format 
+format-volume = <ramp-volume> <label-volume>
+format-volume-underline = ${colors.function}
+
+label-muted =  muted
+label-muted-foreground = ${colors.urgent}
+label-muted-underline = ${colors.urgent}
+
+ramp-volume-0 = 
+ramp-volume-0-foreground = ${colors.success}
+ramp-volume-1 = 
+ramp-volume-1-foreground = ${colors.notify}
+ramp-volume-2 = 
+ramp-volume-2-foreground = ${colors.urgent}
+
+ramp-headphones-0 = 
+
+ramp-volume-foreground = ${colors.nord7}
+
+
+[module/backlight]
+type = internal/xbacklight
+card = amdgpu_bl0
+
+enable-scroll = true
+
+; Format
+format = <ramp> <label>
+format-underline = ${colors.nord9}
+
+ramp-0 = 
+
+label = %percentage%%
+ramp-foreground = ${colors.nord9}
+
+[module/notify]
+type = custom/text
+content = 
+content-foreground = ${colors.warning}
+content-underline = ${colors.warning}
+content-padding = 1
+
+click-left = xdotool key control+grave
+
+[module/network]
+type = internal/network
+interface = enp5s0
+
+interval = 1
+
+format-connected = <ramp-signal> <label-connected>
+format-disconnected = <label-disconnected>
+
+label-disconnected = Hävitin paketit
+label-disconnected-foreground = ${colors.urgent}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+
+ramp-signal-0-foreground = ${colors.urgent}
+ramp-signal-0-underline = ${colors.urgent}
+
+ramp-signal-1-foreground = ${colors.notify}
+ramp-signal-1-underline = ${colors.notify}
+
+ramp-signal-2-foreground = ${colors.nord7}
+ramp-signal-2-underline = ${colors.nord7}
+
+ramp-signal-3-foreground = ${colors.success}
+ramp-signal-3-underline = ${colors.success}
+
+; Modified version of https://github.com/alnj/polywins
+[module/polywins]
+type = custom/script
+exec = ~/.config/polybar/scripts/polywins.sh 2>/dev/null
+format = <label>
+label = %output%
+label-padding = 1
+tail = true
 
 [global/wm]
 margin-top = 0

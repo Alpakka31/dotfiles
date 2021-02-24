@@ -1,9 +1,9 @@
 include "/usr/share/nano/*.nanorc"
 set constantshow
-set nonewlines
+#set nonewlines
 set softwrap
 set tabsize 4
-set tabstospaces
+#set tabstospaces
 set titlecolor white,blue
 set statuscolor white,black
 set selectedcolor white,black

@@ -1,6 +1,6 @@
 configuration {
- modi: "window,drun,combi";
- theme: "slate";
+ modi: "drun";
+ theme: "nord";
  font: "hack 10";
- combi-modi: "window,drun";
+ combi-modi: "drun";
 }

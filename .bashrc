@@ -38,6 +38,8 @@ ex() {
 
 alias doas="doas --"
 
+export PS1='\[\e[0m\]\$ \[\e[0m\]\u\[\e[0m\]:\[\e[0;38;5;67m\]\w\n\[\e[0m\]> \[\e[0m\]'
+
 alias ..="cd .."
 alias ...="cd ../.."
 alias .3="cd ../../.."
@@ -51,3 +53,4 @@ alias fgrep="fgrep --color=auto"
 
 alias cp="cp -i"
 alias rm="rm -i"
+
