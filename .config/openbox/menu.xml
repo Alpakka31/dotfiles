@@ -94,7 +94,7 @@
     <action name="Execute"><execute>obconf</execute></action>
   </item>
   <item label="Lock screen">
-    <action name="Execute"><execute>slock</execute></action>
+    <action name="Execute"><execute>xscreensaver-command -lock</execute></action>
   </item>
   <item label="Reconfigure">
     <action name="Reconfigure" />
