@@ -17,6 +17,7 @@
 #xfce-mcs-manager &
 setxkbmap fi & # keyboard layout
 lxpolkit & # polkit agent
-picom & # compositor
-feh --bg-scale $HOME/Kuvat/Blueberries.jpg & # background
+picom -b -c -C --config $HOME/.config/picom/picom.conf & # compositor
+feh --bg-scale $HOME/Kuvat/Nordic-Landscape-1080p.jpg & # background
 $HOME/.config/polybar/launch.sh # polybar
+nm-applet &
