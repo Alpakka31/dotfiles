@@ -33,7 +33,7 @@ override-redirect = false
 line-size = 2
 
 padding = 0
-font-0 = "SauceCodePro Nerd Font Mono:style=Regular:pixelsize=10:antialias=true;1"
+font-0 = "MesloLGS Nerd Font Mono:style=Regular:pixelsize=10:antialias=true;1"
 
 tray-padding = 3
 tray-detached = false
@@ -89,23 +89,6 @@ label-full = 
 label-full-foreground = ${colors.success}
 label-full-underline = ${colors.success}
 
-[module/keyboard]
-type = internal/xkeyboard
-
-; List of indicators to ignore
-bufferlist-0 = num lock
-bufferlist-1 = scroll lock
-
-; Format
-format = <label-indicator>
-
-label-indicator-on-capslock =  CL
-label-indicator-on-capslock-foreground = ${colors.warning}
-label-indicator-on-capslock-underline = ${colors.warning}
-
-; Icons
-layout-icon-default = 
-
 [module/alsa]
 type = internal/alsa
 
@@ -150,25 +133,16 @@ ramp-0 = 
 label = %percentage%%
 ramp-foreground = ${colors.nord9}
 
-[module/notify]
-type = custom/text
-content = 
-content-foreground = ${colors.warning}
-content-underline = ${colors.warning}
-content-padding = 1
-
-click-left = xdotool key control+grave
-
 [module/network]
 type = internal/network
-interface = wlp1s0
+interface = enp5s0
 
 interval = 1
 
 format-connected = <ramp-signal> <label-connected>
 format-disconnected = <label-disconnected>
 
-label-disconnected = Hävitin paketit
+label-disconnected = PERKELE
 label-disconnected-foreground = ${colors.urgent}
 
 ramp-signal-0 = 

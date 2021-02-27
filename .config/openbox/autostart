@@ -18,6 +18,7 @@
 setxkbmap fi & # keyboard layout
 lxpolkit & # polkit agent
 picom -b --config $HOME/.config/picom/picom.conf & # compositor
-feh --bg-scale $HOME/Kuvat/Nordic-Landscape-1440p.jpg & # background
+feh --bg-scale $HOME/Kuvat/Nord-Arctic-Fox.png & # background
 $HOME/.config/polybar/launch.sh # polybar
 nm-applet &
+#xscreensaver -nosplash &
