@@ -57,7 +57,7 @@
     <keepBorder>yes</keepBorder>
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
-      <name>SauceCodePro Nerd Font Mono</name>
+      <name>MesloLGS Nerd Font Mono</name>
       <size>10</size>
       <!-- font size in points -->
       <weight>bold</weight>
@@ -66,7 +66,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveWindow">
-      <name>SauceCodePro Nerd Font Mono</name>
+      <name>MesloLGS Nerd Font Mono</name>
       <size>10</size>
       <!-- font size in points -->
       <weight>bold</weight>
@@ -75,7 +75,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuHeader">
-      <name>SauceCodePro Nerd Font Mono</name>
+      <name>MesloLGS Nerd Font Mono</name>
       <size>10</size>
       <!-- font size in points -->
       <weight>normal</weight>
@@ -84,7 +84,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuItem">
-      <name>SauceCodePro Nerd Font Mono</name>
+      <name>MesloLGS Nerd Font Mono</name>
       <size>10</size>
       <!-- font size in points -->
       <weight>normal</weight>
@@ -93,7 +93,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="ActiveOnScreenDisplay">
-      <name>SauceCodePro Nerd Font Mono</name>
+      <name>MesloLGS Nerd Font Mono</name>
       <size>10</size>
       <!-- font size in points -->
       <weight>bold</weight>
@@ -102,7 +102,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveOnScreenDisplay">
-      <name>SauceCodePro Nerd Font Mono</name>
+      <name>MesloLGS Nerd Font Mono</name>
       <size>10</size>
       <!-- font size in points -->
       <weight>bold</weight>
@@ -353,9 +353,9 @@
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>xscreensaver</name>
+          <name>slock</name>
         </startupnotify>
-        <command>xscreensaver-command -lock</command>
+        <command>slock</command>
       </action>
     </keybind>
     <keybind key="W-space">
@@ -367,29 +367,29 @@
         <command>rofi -show drun</command>
       </action>
     </keybind>
-	<!-- Media keys -->
-	<keybind key="XF86AudioRaiseVolume">
+    <!-- Media keys -->
+    <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
         <command>amixer -q -D pulse sset Master 5%+</command>
       </action>
     </keybind>
-	<keybind key="XF86AudioLowerVolume">
+    <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
         <command>amixer -q -D pulse sset Master 5%-</command>
       </action>
     </keybind>
-	<keybind key="XF86AudioMute">
+    <keybind key="XF86AudioMute">
       <action name="Execute">
         <command>amixer -q -D pulse sset Master toggle</command>
       </action>
     </keybind>
-	<!-- Brightness keys -->
-	<keybind key="XF86MonBrightnessDown">
+    <!-- Brightness keys -->
+    <keybind key="XF86MonBrightnessDown">
       <action name="Execute">
         <command>xbacklight -dec 5</command>
       </action>
     </keybind>
-	<keybind key="XF86MonBrightnessUp">
+    <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
         <command>xbacklight -inc 5</command>
       </action>
