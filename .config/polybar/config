@@ -1,0 +1,273 @@
+;
+;
+; POLYBAR
+;
+;
+
+[colors]
+background = #000000
+foreground = #FFFFFF
+color1 = #597fab
+color2 = #4c5661
+
+[bar/main]
+monitor = ${env:MONITOR}
+width = 100%
+height = 22
+radius = 0.0
+fixed-center = true
+bottom = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #000000
+
+padding-left = 1
+padding-right = 1
+
+module-margin-left = 2
+module-margin-right = 2
+
+font-0 = "Hack:pixelsize=10;2"
+font-1 = "FiraCode Nerd Font Mono:pixelsize=22;4"
+
+modules-left = bspwm
+;modules-right = mpd pulseaudio wlan eth battery backlight date
+modules-right = mpd pacman-updates pulseaudio wlan eth battery date powermenu
+
+tray-position = right
+tray-padding = 2
+
+wm-restack = bspwm
+override-redirect = true
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+cursor-click = pointer
+
+enable-ipc = true
+pseudo-transparency = false
+
+
+[module/bspwm]
+type = internal/bspwm
+
+pin-workspaces = true
+enable-click = true
+enable-scroll = true
+reverse-scroll = true
+fuzzy-match = false
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-default = 
+
+format = <label-state> <label-mode>
+
+label-monitor = %name%
+
+label-focused = %icon%
+label-focused-foreground = ${colors.color1}
+label-focused-background = ${colors.background}
+label-focused-padding = 2
+label-focused-underline = ${colors.color1}
+
+label-occupied = %icon%
+label-occupied-background = ${colors.background}
+label-occupied-foreground = ${colors.color1}
+label-occupied-padding = 2
+
+label-urgent = %icon%
+label-urgent-padding = 2
+
+label-empty = %icon%
+label-empty-padding = 2
+label-empty-foreground = ${colors.color1}
+
+label-separator = |
+label-separator-foreground = ${colors.color2}
+
+[module/mpd]
+type = internal/mpd
+
+host = 127.0.0.1
+port = 6600
+
+interval = 1
+
+format-online = <label-song>  <bar-progress>
+
+label-song =  %artist% - %title%
+icon-play = 
+icon-pause = 
+icon-stop = 
+icon-prev = 
+icon-next = 
+icon-seekb = 
+icon-seekf = 
+icon-random = 
+
+bar-progress-width = 45
+bar-progress-indicator = >
+bar-progress-fill = ─
+bar-progress-empty = ─
+
+[module/xbacklight]
+type = internal/xbacklight
+
+enable-scroll = false
+
+format = <bar>
+
+bar-width = 10
+bar-indicator = >
+bar-fill = ─
+bar-empty = ─
+
+
+[module/backlight]
+type = module/backlight
+card = amdgpu_bl0
+
+enable-scroll = false
+
+format = <bar>
+
+bar-width = 10
+bar-indicator = >
+bar-fill = ─
+bar-empty = ─
+
+
+
+[module/wlan]
+type = internal/network
+interface = wlp1s0
+interval = 1
+unknown-as-up = true
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+
+label-connected =  %essid%
+label-connected-foreground = ${colors.foreground}
+
+label-disconnected =  disconnected
+label-disconnected-foreground = ${colors.foreground}
+
+
+[module/eth]
+type = internal/network
+
+interface = enp5s0
+interval = 1
+unknown-as-up = false
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+
+label-connected =  connected
+label-connected-foreground = ${colors.foreground}
+
+label-disconnected =  disconnected
+label-disconnected-foreground = ${colors.foreground}
+
+[module/date]
+type = internal/date
+
+interval = 1.0
+
+date = %d.%m.%Y%
+time = %H:%M:%S
+
+format =  <label>
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+
+label = %date% %time%
+label-foreground = ${colors.foreground}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume> <label-volume>
+format-muted = <label-muted>
+label-volume = %percentage%%
+
+label-muted =  muted
+label-muted-foreground = ${colors.foreground}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+click-right = pavucontrol
+
+
+[module/battery]
+type = internal/battery
+
+full-at = 100
+
+
+battery = BATT
+adapter = ACAD
+poll-interval = 5
+
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+
+label-charging = %percentage%%
+label-discharging = %percentage%%
+label-full = %percentage%%
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+animation-discharging-framerate = 500
+
+[module/pacman-updates]
+type = custom/script
+label = %output%
+exec = ~/.config/polybar/scripts/pacman-updates.sh
+interval = 100
+format-prefix = " "
+;format-prefix-foreground = ${colors.color1}
+
+[module/powermenu]
+type = custom/script
+exec = ~/.config/polybar/scripts/powermenu.sh
+click-left = ~/.config/polybar/scripts/powermenu.sh open
+
+[settings]
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
