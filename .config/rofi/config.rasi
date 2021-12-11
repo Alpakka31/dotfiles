@@ -1,6 +1,0 @@
-configuration {
- modi: "drun";
- theme: "nord";
- font: "hack 10";
- combi-modi: "drun";
-}
