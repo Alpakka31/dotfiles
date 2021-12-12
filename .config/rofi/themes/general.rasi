@@ -65,6 +65,11 @@
 	font: "FiraCode Regular 13";
 }
 
+#textbox {
+	background-color: @background;
+	text-color: @foreground;
+}
+
 #prompt {
 	background-color: @background;
 	padding: 0 4px;
