@@ -41,6 +41,8 @@ handle_operation() {
 			[ "$1" == "logout" ] && {
 				if [ "$WMNAME" == "bspwm" ]; then
 					bspc quit
+				elif [ "$WMNAME" == "awesome" ]; then
+					echo 'awesome.quit()' | awesome-client
 				fi
 			}
 		elif [ "$answer" == "no" ]; then
