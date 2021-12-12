@@ -469,6 +469,14 @@ awful.rules.rules = {
     	properties = { screen = 1, tag = "3" } },
     { rule = { class = "Gimp" },
     	properties = { screen = 1, tag = "5" } },
+    { rule = { class = "discord" },
+        properties = { screen = 1, tag = "4" } },
+    { rule = { class = "Steam" },
+    	properties = { screen = 1, tag = "6" } },
+    { rule = { class = "VirtualBox Manager" },
+    	properties = { screen = 1, tag = "7" } },
+    { rule = { class = "Lutris" },
+    	properties = { screen = 1, tag = "6" } },
 }
 -- }}}
 
