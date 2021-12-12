@@ -8,3 +8,6 @@ cp .xinitrc ~/
 cp .zprofile ~/
 cp .zshenv ~/
 cp .zshrc ~/
+
+echo "Generating new font cache"
+fc-cache -fv
