@@ -1,2 +1,15 @@
 # dotfiles
-This repository includes my dotfiles that I use on Linux  
+My dotfiles FreeBSD  
+Programs
+    * CWM
+    * musicpd
+    * ncmpcpp
+    * zsh
+    * alacritty
+    * lemonbar
+    * nvim
+    * picom
+    * rofi
+
+Themes
+    * Dracula
