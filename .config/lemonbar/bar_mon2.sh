@@ -41,7 +41,7 @@ cpu() {
     echo "CPU ${cpu_usage}"
 }
 
-while :; do date_time; sleep 3; done > "$fifo" &
+while :; do date_time; sleep 60; done > "$fifo" &
 while :; do volume; sleep 3; done > "$fifo" &
 while :; do wifi; sleep 60; done > "$fifo" &
 while :; do memory; sleep 3; done > "$fifo" &
@@ -49,12 +49,12 @@ while :; do cpu; sleep 3; done > "$fifo" &
 
 while read -r line; do
 	case $line in
-        Clock*)
-            clock="${line:5}"
-            ;;
-        Volume*)
-            vol="${line:6}"
-            ;;
+		Clock*)
+			clock="${line:5}"
+			;;
+		Volume*)
+			vol="${line:6}"
+			;;
         WiFi*)
             wifi="${line:4}"
             ;;
@@ -65,6 +65,8 @@ while read -r line; do
             cpu="${line:3}"
             ;;
 	esac
-    echo "%{r}${clock} | cpu:%{F#ff92df}${cpu} %{F#FFFFFF}| mem:%{F#ff92df}${mem} %{F#FFFFFF}| vol:%{F#ff92df}${vol}% %{F#FFFFFF}| wifi:%{F#ff92df}${wifi} %{F#FFFFFF}"
+    #echo "%{r}%{F#ff92df}${clock} %{F#FFFFFF}| cpu:%{F#ff92df}${cpu} %{F#FFFFFF}| mem:%{F#ff92df}${mem} %{F#FFFFFF}| vol:%{F#ff92df}${vol}% %{F#FFFFFF}| wifi:%{F#ff92df}${wifi} %{F#FFFFFF}"
+
+    echo "%{r}%{F#ff92df}${clock} %{F#FFFFFF}| cpu:%{F#ff92df}${cpu} %{F#FFFFFF}| mem:%{F#ff92df}${mem} %{F#FFFFFF}| vol:%{F#ff92df}${vol}% %{F#FFFFFF}"
 done < "$fifo" | lemonbar -o 0 -f "Hack:style=Bold:pixelsize=14" -d -B "#CF000000" -g "${res}" | bash
 
