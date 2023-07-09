@@ -1,5 +1,5 @@
 # dotfiles
-My dotfiles FreeBSD  
+My FreeBSD dotfiles   
 
 ![Rice](https://raw.githubusercontent.com/Alpakka31/dotfiles/master/rice.png)
 
