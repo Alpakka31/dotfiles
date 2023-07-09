@@ -41,7 +41,7 @@ cpu() {
     echo "CPU ${cpu_usage}"
 }
 
-while :; do date_time; sleep 60; done > "$fifo" &
+while :; do date_time; sleep 3; done > "$fifo" &
 while :; do volume; sleep 3; done > "$fifo" &
 while :; do wifi; sleep 60; done > "$fifo" &
 while :; do memory; sleep 3; done > "$fifo" &
@@ -49,12 +49,12 @@ while :; do cpu; sleep 3; done > "$fifo" &
 
 while read -r line; do
 	case $line in
-		Clock*)
-			clock="${line:5}"
-			;;
-		Volume*)
-			vol="${line:6}"
-			;;
+        Clock*)
+            clock="${line:5}"
+            ;;
+        Volume*)
+            vol="${line:6}"
+            ;;
         WiFi*)
             wifi="${line:4}"
             ;;
