@@ -15,6 +15,9 @@
 }
 
 configuration {
+    modi: "drun";
+    font: "hack 10";
+    combi-modi: "drun";
     show-icons:      true;
     display-drun:    "";
     disable-history: false;
