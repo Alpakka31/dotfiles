@@ -5,7 +5,7 @@ My dotfiles FreeBSD
 * CWM
 * musicpd
 * ncmpcpp
-* zsh
+* zsh (oh-my-zsh)
 * alacritty
 * lemonbar
 * nvim
