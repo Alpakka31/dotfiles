@@ -1,0 +1,32 @@
+ncmpcpp_directory = ~/.ncmpcpp
+lyrics_directory = ~/.lyrics
+mpd_host = /usr/home/patrik/.mpd/socket
+mpd_music_dir = /usr/home/patrik/Musiikki
+
+playlist_disable_highlight_delay = 0
+current_item_prefix = $(4)$r
+current_item_suffix = $/r$(end)
+current_item_inactive_column_prefix = $(5)$r
+current_item_inactive_column_suffix = $/r$(end)
+now_playing_prefix = $b
+now_playing_suffix = $/b
+song_columns_list_format = "(5)[3]{n} (25)[5]{a} (35)[6]{t} (32)[5]{bl} (7)[3]{lr}"
+
+playlist_display_mode = columns
+browser_display_mode = classic
+autocenter_mode = yes
+centered_cursor = yes
+
+progressbar_look = —|—
+user_interface = classic
+titles_visibility = no
+cyclic_scrolling = yes
+lines_scrolled = 1
+allow_for_physical_item_deletion = yes
+
+display_bitrate = yes
+ignore_leading_the = yes
+mouse_list_scroll_whole_page = no
+external_editor = vim
+colors_enabled = yes
+
