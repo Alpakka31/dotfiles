@@ -1,8 +1,0 @@
-configuration {
- modi: "drun,combi";
- show-icons: true;
- icon-theme: "Papirus";
- display-window: "";
- display-drun: "";
- display-combi: "";
-}
