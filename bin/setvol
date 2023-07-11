@@ -1,0 +1,32 @@
+#!/usr/bin/awk -f
+
+function usage() {
+    print "Usage: setvol <volume>";
+    print "   <volume>: volume level (between 0 and 1)"
+}
+
+function die(msg) {
+    print msg;
+    usage();
+    exit 1;
+}
+
+BEGIN {
+    if (ARGV[1] < 0 || ARGV[1] > 1) {
+        die("volume level must be between 0 and 1");
+    } else if (ARGV[1] == "") {
+        die("volume level not given");
+    } else {
+        # construct command
+        sndioctl = "sndioctl";
+        space = " ";
+        sndioctl_option = "output.level";
+        equal = "=";
+        volume_level = ARGV[1];
+
+        cmd = sndioctl space sndioctl_option equal volume_level
+        system(cmd);
+        close(cmd);
+        exit 0;
+    }
+}
