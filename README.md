@@ -13,6 +13,7 @@ My OpenBSD dotfiles
 * neovim
 * picom
 * rofi
+* slock
 
 ## Themes
 * Dracula
