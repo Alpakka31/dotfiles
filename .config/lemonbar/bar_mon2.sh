@@ -12,7 +12,7 @@ date_time() {
 }
 
 volume() {
-	level=$(sndioctl | awk -F'=' '{print $NF}')
+	level=$(sndioctl output.level | awk -F'=' '{print $NF}')
 	echo "Volume $level"
 }
 
