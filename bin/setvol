@@ -2,7 +2,7 @@
 
 function usage() {
     print "Usage: setvol <volume>";
-    print "   <volume>: volume level (between 0 and 1)"
+    print "   <volume>: volume level (between 0 and 1)";
 }
 
 function die(msg) {
@@ -24,7 +24,7 @@ BEGIN {
         equal = "=";
         volume_level = ARGV[1];
 
-        cmd = sndioctl space sndioctl_option equal volume_level
+        cmd = sndioctl space sndioctl_option equal volume_level;
         system(cmd);
         close(cmd);
         exit 0;
