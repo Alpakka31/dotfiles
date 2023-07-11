@@ -1,16 +1,16 @@
 # dotfiles
-My FreeBSD dotfiles   
+My OpenBSD dotfiles   
 
 ![Rice](https://raw.githubusercontent.com/Alpakka31/dotfiles/master/rice.png)
 
 ## Programs
 * CWM
-* musicpd
+* mpd
 * ncmpcpp
 * zsh (oh-my-zsh)
 * alacritty
-* lemonbar
-* nvim
+* lemonbar-xft
+* neovim
 * picom
 * rofi
 

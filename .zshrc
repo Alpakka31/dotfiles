@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -99,13 +99,14 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#export TERM=wsvt25
 
 export XDG_RUNTIME_DIR=/tmp/user/$(id -u)
 export XDG_SESSION_TYPE=x11
-export PATH=$HOME/.local/bin:$PATH
 
-alias ls="ls --color=always"
-alias grep="grep --color=always"
+export LSCOLORS=gxfxcxdxbxegedabagacad
+
 alias vim="nvim"
-
+alias ls="colorls -GF"
 neofetch
+

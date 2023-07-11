@@ -6,19 +6,19 @@ fifo="/tmp/panel_fifo2"
 mkfifo "$fifo"
 
 date_time() {
-	time=$(date +%-H:%M)
-	date=$(date +%a\ %-d\.%-m\.%Y)
+	time=$(date +%H:%M)
+	date=$(date +%a\ %d\.%m\.%Y)
 	echo "Clock $date $time"
 }
 
 volume() {
-	level=$(mixer vol | awk '{print $NF}' | awk -F':' '{print $1}')
+	level=$(sndioctl | awk -F'=' '{print $NF}')
 	echo "Volume $level"
 }
 
 wifi() {
-    ipaddress=$(ifconfig wlan0 | awk '/inet/{print $2}')
-    ssid=$(ifconfig wlan0 | awk '/ssid/{print $2}')
+    ipaddress=$(ifconfig iwx0 | awk '/inet/{print $2}')
+    ssid=$(ifconfig iwx0 | awk '/nwid/{print $3}' | tr -d '"')
 
     echo "WiFi $ssid <-> $ipaddress"
 }
@@ -26,12 +26,9 @@ wifi() {
 memory() {
     # From neofetch
     mem_total="$(($(sysctl -n hw.physmem) / 1024 / 1024))"
-    hw_pagesize="$(sysctl -n hw.pagesize)"
-    mem_inactive="$(($(sysctl -n vm.stats.vm.v_inactive_count) * hw_pagesize))"
-    mem_unused="$(($(sysctl -n vm.stats.vm.v_free_count) * hw_pagesize))"
-    mem_cache="$(($(sysctl -n vm.stats.vm.v_cache_count) * hw_pagesize))"
-    mem_free="$(((mem_inactive + mem_unused + mem_cache) / 1024 / 1024))"
-    mem_used="$((mem_total - mem_free))"
+    #mem_free="$(($(vmstat | awk 'END {printf $5}') / 1024))"
+    mem_used="$(vmstat | awk 'END {printf $3}')"
+    mem_used="${mem_used/M}"
 
     echo "Memory ${mem_used}MiB / ${mem_total}MiB"
 }
@@ -68,5 +65,5 @@ while read -r line; do
     #echo "%{r}%{F#ff92df}${clock} %{F#FFFFFF}| cpu:%{F#ff92df}${cpu} %{F#FFFFFF}| mem:%{F#ff92df}${mem} %{F#FFFFFF}| vol:%{F#ff92df}${vol}% %{F#FFFFFF}| wifi:%{F#ff92df}${wifi} %{F#FFFFFF}"
 
     echo "%{r}%{F#ff92df}${clock} %{F#FFFFFF}| cpu:%{F#ff92df}${cpu} %{F#FFFFFF}| mem:%{F#ff92df}${mem} %{F#FFFFFF}| vol:%{F#ff92df}${vol}% %{F#FFFFFF}"
-done < "$fifo" | lemonbar -o 0 -f "Hack:style=Bold:pixelsize=14" -d -B "#CF000000" -g "${res}" | bash
+done < "$fifo" | lemonbar-xft -o 0 -f "Hack:style=Bold:pixelsize=14" -d -B "#CF000000" -g "${res}" | bash
 
