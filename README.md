@@ -15,5 +15,8 @@ My OpenBSD dotfiles
 * rofi
 * slock
 
+## Fonts
+* Hack
+
 ## Themes
 * Dracula
